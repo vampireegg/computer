@@ -11,6 +11,28 @@ local scene = composer.newScene()
 local widget = require "widget"
 local totalHeight = 1080
 local totalWidth = 1920
+local background
+local index
+
+
+local title = 
+[[
+ ██████╗ ██████╗ ██████╗ ███████╗████████╗██████╗ ██╗   ██╗███╗   ███╗                                                     
+██╔════╝██╔═══██╗██╔══██╗██╔════╝╚══██╔══╝██╔══██╗██║   ██║████╗ ████║██╗                                                  
+██║     ██║   ██║██████╔╝█████╗     ██║   ██████╔╝██║   ██║██╔████╔██║╚═╝                                                  
+██║     ██║   ██║██╔═══╝ ██╔══╝     ██║   ██╔══██╗██║   ██║██║╚██╔╝██║██╗                                                  
+╚██████╗╚██████╔╝██║     ███████╗   ██║   ██║  ██║╚██████╔╝██║ ╚═╝ ██║╚═╝                                                  
+ ╚═════╝ ╚═════╝ ╚═╝     ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝                                                     
+                                                                                                                           
+                                                                                                                           
+                                                                                                                           
+████████╗██╗  ██╗███████╗    ██╗  ██╗ █████╗  ██████╗██╗  ██╗██╗███╗   ██╗ ██████╗      ██████╗  █████╗ ███╗   ███╗███████╗
+╚══██╔══╝██║  ██║██╔════╝    ██║  ██║██╔══██╗██╔════╝██║ ██╔╝██║████╗  ██║██╔════╝     ██╔════╝ ██╔══██╗████╗ ████║██╔════╝
+   ██║   ███████║█████╗      ███████║███████║██║     █████╔╝ ██║██╔██╗ ██║██║  ███╗    ██║  ███╗███████║██╔████╔██║█████╗  
+   ██║   ██╔══██║██╔══╝      ██╔══██║██╔══██║██║     ██╔═██╗ ██║██║╚██╗██║██║   ██║    ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  
+   ██║   ██║  ██║███████╗    ██║  ██║██║  ██║╚██████╗██║  ██╗██║██║ ╚████║╚██████╔╝    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗
+   ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝	
+]]
 
 --------------------------------------------
 
@@ -26,8 +48,15 @@ local function onPlayBtnRelease()
 	return true	-- indicates successful touch
 end
 
+local function on_frame( event )
+	local str = string.sub(title, 1 , index * 7)
+	background.txt.text = str
+	index = index + 1
+end
+
 function scene:create( event )
 	local sceneGroup = self.view
+	index = 1
 
 	-- Called when the scene's view does not exist.
 	-- 
@@ -35,17 +64,31 @@ function scene:create( event )
 	-- e.g. add display objects to 'sceneGroup', add touch listeners, etc.
 
 	-- display a background image
-	local background = display.newRect(sceneGroup, totalWidth/2, totalHeight/2, totalWidth, totalHeight)
-	background:setFillColor(0.3, 0.2, 0.1, 1)
+	
+	local options = 
+	{
+		text = "",     
+		x = totalWidth/2,
+		y = totalHeight/2 - 100,
+		font = "cour.ttf",   
+		fontSize = 16,
+		align = "left"  -- Alignment parameter
+	}
+	 
+	--local myText = display.newText( options )
+	background = display.newRect(sceneGroup, totalWidth/2, totalHeight/2, totalWidth, totalHeight)
+	background:setFillColor(0.2, 0.1, 0.05, 1)
+	
+	background.txt = display.newText(options )
+			
+	background.txt:setFillColor( 1, 1, 0.7, 1)
 	
 	-- create/position logo/title image on upper-half of the screen
-	local titleLogo = display.newImageRect( "logo.png", 264, 42 )
-	titleLogo.x = display.contentCenterX
-	titleLogo.y = 100
+
 	
 	-- create a widget button (which will loads level1.lua on release)
 	playBtn = widget.newButton{
-		label="Play Now",
+		label="",
 		labelColor = { default={255}, over={128} },
 		default="button.png",
 		over="button-over.png",
@@ -56,7 +99,6 @@ function scene:create( event )
 	playBtn.y = display.contentHeight - 125
 	
 	-- all display objects must be inserted into group
-	sceneGroup:insert( titleLogo )
 	sceneGroup:insert( playBtn )
 end
 
@@ -71,6 +113,7 @@ function scene:show( event )
 		-- 
 		-- INSERT code here to make the scene come alive
 		-- e.g. start timers, begin animation, play audio, etc.
+		Runtime:addEventListener( "enterFrame", on_frame )
 	end	
 end
 
