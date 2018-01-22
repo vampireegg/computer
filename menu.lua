@@ -15,7 +15,7 @@ local background
 local index
 local showName
 local speed1 = 15
-local speed2 = 30
+local speed2 = 45
 
 
 local title = 
@@ -128,10 +128,10 @@ function scene:create( event )
 	local options = 
 	{
 		text = "",     
-		x = totalWidth/2 - 100,
+		x = totalWidth/2 - 200,
 		y = totalHeight/2 - 150,
 		font = "cour.ttf",   
-		fontSize = 16,
+		fontSize = 14,
 		align = "left"  -- Alignment parameter
 	}
 	
@@ -139,7 +139,7 @@ function scene:create( event )
 	{
 		text = "",     
 		x = totalWidth - 100,
-		y = totalHeight - 100,
+		y = totalHeight - 150,
 		font = "cour.ttf",   
 		fontSize = 3,
 		align = "right"  -- Alignment parameter
@@ -147,13 +147,13 @@ function scene:create( event )
 	 
 	--local myText = display.newText( options )
 	background = display.newRect(sceneGroup, totalWidth/2, totalHeight/2, totalWidth, totalHeight)
-	background:setFillColor(0.2, 0.1, 0.05, 1)
+	background:setFillColor(0.1, 0.05, 0.15, 1)
 	
 	background.txt = display.newText(options )
 	background.txt2 = display.newText(options2)
 			
 	background.txt:setFillColor( 1, 1, 0.7, 1)
-	background.txt2:setFillColor( 0.9, 0.7, 0.9, 1)
+	background.txt2:setFillColor( 0.9, 0.9, 0.7, 1)
 	
 	-- create/position logo/title image on upper-half of the screen
 
