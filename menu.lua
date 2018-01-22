@@ -16,6 +16,8 @@ local index
 local showName
 local speed1 = 15
 local speed2 = 45
+local backgroundMusic
+local backgroundMusicChannel
 
 
 local title = 
@@ -37,7 +39,7 @@ local title =
    ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝	
 ]]
 
-local vampireeg =
+local vampireegg =
 [[
                                                                                                                                                                
                                                                                                                                                                
@@ -103,13 +105,23 @@ local function on_frame( event )
 		local str = string.sub(title, 1 , index * speed1)
 		background.txt.text = str
 	else
-		local str = string.sub(vampireeg, 1 , index * speed2)
+		local str = string.sub(vampireegg, 1 , index * speed2)
 		background.txt2.text = str
 	end
 	index = index + 1
 	if(index * speed1 > #title and showName == true) then
 		showName = false
 		index = 1
+		audio.pause( backgroundMusicChannel )
+		timer.performWithDelay( 1000, function()
+ 
+			audio.resume( backgroundMusicChannel )
+		 
+		end, 1 )
+	end
+	
+	if(showName == false and index * speed2 >= #vampireegg) then
+		audio.stop( backgroundMusicChannel )
 	end
 end
 
@@ -141,7 +153,7 @@ function scene:create( event )
 		x = totalWidth - 100,
 		y = totalHeight - 150,
 		font = "cour.ttf",   
-		fontSize = 3,
+		fontSize = 2,
 		align = "right"  -- Alignment parameter
 	}
 	 
@@ -154,6 +166,10 @@ function scene:create( event )
 			
 	background.txt:setFillColor( 1, 1, 0.7, 1)
 	background.txt2:setFillColor( 0.9, 0.9, 0.7, 1)
+	
+	backgroundMusic = audio.loadStream( "typing.wav" )
+	backgroundMusicChannel = audio.play( backgroundMusic, { channel=1, loops=-1, fadein=5000 } )
+	audio.setVolume( 0.1, { channel=1 } )
 	
 	-- create/position logo/title image on upper-half of the screen
 
