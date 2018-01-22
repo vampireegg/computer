@@ -14,6 +14,8 @@ local totalWidth = 1920
 local background
 local index
 local showName
+local speed1 = 15
+local speed2 = 30
 
 
 local title = 
@@ -39,37 +41,47 @@ local vampireeg =
 [[
                                                                                                                                                                
                                                                                                                                                                
-                                                                         *@@@     @@@%.                                                                        
-                                                .                        @@@@@@@@@@@@@%                       ,                                                
-                                                @@@%,                    @@@@@@@@@@@@@                    .%@@@                                                
-                                                @@@@@@@&                ,@@&&&% /&&&@@#                %@@@@@@@(                                               
-                                               &@@@@@@@@@@@*            @@@@#%   &%@@@@            *@@@@@@@@@@@@                                               
-                                              @@@@@    &@@&&@@@&*      %@@@%        @@@@      *%@@@@@@@@    @@@@@                                              
-                                             %@@@&        &&@@@@@@&@@@#@&             &&(@@@@@@@@@@&@        &@@@@                                             
-                                            %@@@@              &@@@@@@@@@&@&&@@@@@@@@@@@@@@@@@@@              &@@@%                                            
-                                           &@@@@              @@@@    %&@@@&@@@&@@@@@@@@%    @@@@              &@@@@                                           
-                                          (@@@@              @@@@&      @@@         @@@(     %@@@@              &@@@&                                          
-                                          @@@@              @@@@       @@@@         @@@@       @@@@              &@@@(                                         
-                                         @@@@              @@@@@      #@@@&         %@@@&       @@@@              @@@@                                         
-                                        *@@@%(#@@@@@@%    @@@@%       @@@@           @@@@        &@@@    #&@@@@@%(%@@@%                                        
-                                        @@@@&@@@&&@@&@@& @@@@&       @@@@             &@@@       %@@@@ (@@@&@@&@@@@@@@@                                        
-                                         &&@&&%     @@@&@@@@%       %@@@&             %@@@@        @@@@@@@@     %&&@@&                                         
-                                                    %@@@@@@####(    @@@@               @@@@    *####@@@@@@@                                                    
-                                                     @@@@@@@@@@&@&%%@@@%                @@@@(@@@@@@&@@@@@@%                                                    
-                                                    @@@@@@&&%%%&&@@@@@@                 @@@@@@@@%%%%&&@&@@@                                                    
-                                                      &&        &@@@@@@@@&@,       .@@@@@@@@@@&        %@&                                                     
-                                                                 @&@&@@@@@@@&@   &@@@&@@@&@&&@                                                                 
-                                                                 @@@@     &@@&@@@@@@&     &@@@                                                                 
-                                                                             &@@@&                                                                             
-                                                                              &&&                                                                              
                                                                                                                                                                
                                                                                                                                                                
-                                                                    #%%          %%%%.   %%%%%/  #%%%%(   #%%      %%                                          
-                                     %%    %%%   #%%%     %%%%%%%  *%%%%#   %#   %% %%* %%%      %%%     %%       %%(                                          
-                                      %%/ %%%   %%%%%(    %%#%%%%  (%%%%   ,%%   %%%%%  *%%%%%   %%%%%% (%%  %%%  %%/ %%%                                      
-                                       %%%%/   %%%  %%*   %#   %%  %%      /%%   %%%%    %%      %%(     #%%%%%   %%* %%(                                      
-                                       (%#     %     %%   &    #%           %#   # (%(   %%%%%#  %%%%%*    #%%#   /%%%%/                                       
-                                                                                                                                                         
+                                                                                                                                                               
+                                                                                                                                                               
+                                                                                                                                                               
+                                                                                                                                                               
+                                                                                                                                                               
+                                                                                                                                                               
+                                                                                                                                                               
+                                                                         *NNN     NNNV.                                                                        
+                                                .                        NNNNNNNNNNNNNV                       ,                                                
+                                                NNNV,                    NNNNNNNNNNNNN                    .VNNN                                                
+                                                NNNNNNNH                ,NNHHHV /HHHNNF                VNNNNNNN(                                               
+                                               HNNNNNNNNNNN*            NNNNFV   HVNNNN            *NNNNNNNNNNNN                                               
+                                              NNNNN    HNNHHNNNH*      VNNNV        NNNN      *VNNNNNNNN    NNNNN                                              
+                                             VNNNH        HHNNNNNNHNNNFNH             HH(NNNNNNNNNNHN        HNNNN                                             
+                                            VNNNN              HNNNNNNNNNHNHHNNNNNNNNNNNNNNNNNNN              HNNNV                                            
+                                           HNNNN              NNNN    VHNNNHNNNHNNNNNNNNV    NNNN              HNNNN                                           
+                                          (NNNN              NNNNH      NNN         NNN(     VNNNN              HNNNH                                          
+                                          NNNN              NNNN       NNNN         NNNN       NNNN              HNNN(                                         
+                                         NNNN              NNNNN      FNNNH         VNNNH       NNNN              NNNN                                         
+                                        *NNNV(FNNNNNNV    NNNNV       NNNN           NNNN        HNNN    FHNNNNNV(VNNNV                                        
+                                        NNNNHNNNHHNNHNNH NNNNH       NNNN             HNNN       VNNNN (NNNHNNHNNNNNNNN                                        
+                                         HHNHHV     NNNHNNNNV       VNNNH             VNNNN        NNNNNNNN     VHHNNH                                         
+                                                    VNNNNNNFFFF(    NNNN               NNNN    *FFFFNNNNNNN                                                    
+                                                     NNNNNNNNNNHNHVVNNNV                NNNN(NNNNNNHNNNNNNV                                                    
+                                                    NNNNNNHHVVVHHNNNNNN                 NNNNNNNNVVVVHHNHNNN                                                    
+                                                      HH        HNNNNNNNNHN,       .NNNNNNNNNNH        VNH                                                     
+                                                                 NHNHNNNNNNNHN   HNNNHNNNHNHHN                                                                 
+                                                                 NNNN     HNNHNNNNNNH     HNNN                                                                 
+                                                                             HNNNH                                                                             
+                                                                              HHH                                                                              
+                                                                                                                                                               
+                                                                                                                                                               
+                                                                    FVV          VVVV.   VVVVV/  FVVVV(   FVV      VV                                          
+                                     VV    VVV   FVVV     VVVVVVV  *VVVVF   VF   VV VV* VVV      VVV     VV       VV(                                          
+                                      VV/ VVV   VVVVV(    VVFVVVV  (VVVV   ,VV   VVVVV  *VVVVV   VVVVVV (VV  VVV  VV/ VVV                                      
+                                       VVVV/   VVV  VV*   VF   VV  VV      /VV   VVVV    VV      VV(     FVVVVV   VV* VV(                                      
+                                       (VF     V     VV   H    FV           VF   F (V(   VVVVVF  VVVVV*    FVVF   /VVVV/                                       
+                                                                                                                                                               
+                                                                                                                                                      
 ]]
 
 --------------------------------------------
@@ -88,14 +100,14 @@ end
 
 local function on_frame( event )
 	if(showName == true) then
-		local str = string.sub(title, 1 , index * 15)
+		local str = string.sub(title, 1 , index * speed1)
 		background.txt.text = str
 	else
-		local str = string.sub(vampireeg, 1 , index * 30)
+		local str = string.sub(vampireeg, 1 , index * speed2)
 		background.txt2.text = str
 	end
 	index = index + 1
-	if(index * 15 > #title and showName == true) then
+	if(index * speed1 > #title and showName == true) then
 		showName = false
 		index = 1
 	end
