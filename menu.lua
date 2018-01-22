@@ -14,8 +14,8 @@ local totalWidth = 1920
 local background
 local index
 local showName
-local speed1 = 15
-local speed2 = 45
+local speed1 = 10
+local speed2 = 55
 local backgroundMusic
 local backgroundMusicChannel
 
@@ -86,6 +86,27 @@ local vampireegg =
                                                                                                                                                                
 ]]
 
+	local options = 
+	{
+		text = "",     
+		x = totalWidth/2 - 200,
+		y = totalHeight/2 - 150,
+		font = "cour.ttf",   
+		fontSize = 14,
+		align = "left"  -- Alignment parameter
+	}
+	
+	local options2 = 
+	{
+		text = "",     
+		x = totalWidth - 100,
+		y = totalHeight - 150,
+		font = "cour.ttf",   
+		fontSize = 2,
+		align = "right"  -- Alignment parameter
+	}
+	 
+
 --------------------------------------------
 
 -- forward declarations and other locals
@@ -137,35 +158,12 @@ function scene:create( event )
 
 	-- display a background image
 	
-	local options = 
-	{
-		text = "",     
-		x = totalWidth/2 - 200,
-		y = totalHeight/2 - 150,
-		font = "cour.ttf",   
-		fontSize = 14,
-		align = "left"  -- Alignment parameter
-	}
-	
-	local options2 = 
-	{
-		text = "",     
-		x = totalWidth - 100,
-		y = totalHeight - 150,
-		font = "cour.ttf",   
-		fontSize = 2,
-		align = "right"  -- Alignment parameter
-	}
-	 
+
 	--local myText = display.newText( options )
 	background = display.newRect(sceneGroup, totalWidth/2, totalHeight/2, totalWidth, totalHeight)
 	background:setFillColor(0.1, 0.05, 0.15, 1)
 	
-	background.txt = display.newText(options )
-	background.txt2 = display.newText(options2)
-			
-	background.txt:setFillColor( 1, 1, 0.7, 1)
-	background.txt2:setFillColor( 0.9, 0.9, 0.7, 1)
+	
 	
 	backgroundMusic = audio.loadStream( "typing.wav" )
 	backgroundMusicChannel = audio.play( backgroundMusic, { channel=1, loops=-1, fadein=5000 } )
@@ -187,6 +185,11 @@ function scene:show( event )
 		-- 
 		-- INSERT code here to make the scene come alive
 		-- e.g. start timers, begin animation, play audio, etc.
+		background.txt = display.newText(options )
+		background.txt2 = display.newText(options2)
+				
+		background.txt:setFillColor( 1, 1, 0.7, 1)
+		background.txt2:setFillColor( 0.9, 0.9, 0.7, 1)
 		Runtime:addEventListener( "enterFrame", on_frame )
 	end	
 end
