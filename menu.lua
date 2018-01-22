@@ -13,6 +13,7 @@ local totalHeight = 1080
 local totalWidth = 1920
 local background
 local index
+local showName
 
 
 local title = 
@@ -34,6 +35,43 @@ local title =
    ╚═╝   ╚═╝  ╚═╝╚══════╝    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝      ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝	
 ]]
 
+local vampireeg =
+[[
+                                                                                                                                                               
+                                                                                                                                                               
+                                                                         *@@@     @@@%.                                                                        
+                                                .                        @@@@@@@@@@@@@%                       ,                                                
+                                                @@@%,                    @@@@@@@@@@@@@                    .%@@@                                                
+                                                @@@@@@@&                ,@@&&&% /&&&@@#                %@@@@@@@(                                               
+                                               &@@@@@@@@@@@*            @@@@#%   &%@@@@            *@@@@@@@@@@@@                                               
+                                              @@@@@    &@@&&@@@&*      %@@@%        @@@@      *%@@@@@@@@    @@@@@                                              
+                                             %@@@&        &&@@@@@@&@@@#@&             &&(@@@@@@@@@@&@        &@@@@                                             
+                                            %@@@@              &@@@@@@@@@&@&&@@@@@@@@@@@@@@@@@@@              &@@@%                                            
+                                           &@@@@              @@@@    %&@@@&@@@&@@@@@@@@%    @@@@              &@@@@                                           
+                                          (@@@@              @@@@&      @@@         @@@(     %@@@@              &@@@&                                          
+                                          @@@@              @@@@       @@@@         @@@@       @@@@              &@@@(                                         
+                                         @@@@              @@@@@      #@@@&         %@@@&       @@@@              @@@@                                         
+                                        *@@@%(#@@@@@@%    @@@@%       @@@@           @@@@        &@@@    #&@@@@@%(%@@@%                                        
+                                        @@@@&@@@&&@@&@@& @@@@&       @@@@             &@@@       %@@@@ (@@@&@@&@@@@@@@@                                        
+                                         &&@&&%     @@@&@@@@%       %@@@&             %@@@@        @@@@@@@@     %&&@@&                                         
+                                                    %@@@@@@####(    @@@@               @@@@    *####@@@@@@@                                                    
+                                                     @@@@@@@@@@&@&%%@@@%                @@@@(@@@@@@&@@@@@@%                                                    
+                                                    @@@@@@&&%%%&&@@@@@@                 @@@@@@@@%%%%&&@&@@@                                                    
+                                                      &&        &@@@@@@@@&@,       .@@@@@@@@@@&        %@&                                                     
+                                                                 @&@&@@@@@@@&@   &@@@&@@@&@&&@                                                                 
+                                                                 @@@@     &@@&@@@@@@&     &@@@                                                                 
+                                                                             &@@@&                                                                             
+                                                                              &&&                                                                              
+                                                                                                                                                               
+                                                                                                                                                               
+                                                                    #%%          %%%%.   %%%%%/  #%%%%(   #%%      %%                                          
+                                     %%    %%%   #%%%     %%%%%%%  *%%%%#   %#   %% %%* %%%      %%%     %%       %%(                                          
+                                      %%/ %%%   %%%%%(    %%#%%%%  (%%%%   ,%%   %%%%%  *%%%%%   %%%%%% (%%  %%%  %%/ %%%                                      
+                                       %%%%/   %%%  %%*   %#   %%  %%      /%%   %%%%    %%      %%(     #%%%%%   %%* %%(                                      
+                                       (%#     %     %%   &    #%           %#   # (%(   %%%%%#  %%%%%*    #%%#   /%%%%/                                       
+                                                                                                                                                         
+]]
+
 --------------------------------------------
 
 -- forward declarations and other locals
@@ -49,14 +87,24 @@ local function onPlayBtnRelease()
 end
 
 local function on_frame( event )
-	local str = string.sub(title, 1 , index * 7)
-	background.txt.text = str
+	if(showName == true) then
+		local str = string.sub(title, 1 , index * 15)
+		background.txt.text = str
+	else
+		local str = string.sub(vampireeg, 1 , index * 30)
+		background.txt2.text = str
+	end
 	index = index + 1
+	if(index * 15 > #title and showName == true) then
+		showName = false
+		index = 1
+	end
 end
 
 function scene:create( event )
 	local sceneGroup = self.view
 	index = 1
+	showName = true
 
 	-- Called when the scene's view does not exist.
 	-- 
@@ -68,11 +116,21 @@ function scene:create( event )
 	local options = 
 	{
 		text = "",     
-		x = totalWidth/2,
+		x = totalWidth/2 - 100,
 		y = totalHeight/2 - 100,
 		font = "cour.ttf",   
 		fontSize = 16,
 		align = "left"  -- Alignment parameter
+	}
+	
+	local options2 = 
+	{
+		text = "",     
+		x = totalWidth - 100,
+		y = totalHeight - 100,
+		font = "cour.ttf",   
+		fontSize = 2,
+		align = "right"  -- Alignment parameter
 	}
 	 
 	--local myText = display.newText( options )
@@ -80,8 +138,10 @@ function scene:create( event )
 	background:setFillColor(0.2, 0.1, 0.05, 1)
 	
 	background.txt = display.newText(options )
+	background.txt2 = display.newText(options2)
 			
 	background.txt:setFillColor( 1, 1, 0.7, 1)
+	background.txt2:setFillColor( 1, 1, 0.7, 1)
 	
 	-- create/position logo/title image on upper-half of the screen
 
