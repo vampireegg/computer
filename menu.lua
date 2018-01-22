@@ -50,38 +50,38 @@ local vampireeg =
                                                                                                                                                                
                                                                                                                                                                
                                                                                                                                                                
-                                                                         *NNN     NNNV.                                                                        
-                                                .                        NNNNNNNNNNNNNV                       ,                                                
-                                                NNNV,                    NNNNNNNNNNNNN                    .VNNN                                                
-                                                NNNNNNNH                ,NNHHHV /HHHNNF                VNNNNNNN(                                               
-                                               HNNNNNNNNNNN*            NNNNFV   HVNNNN            *NNNNNNNNNNNN                                               
-                                              NNNNN    HNNHHNNNH*      VNNNV        NNNN      *VNNNNNNNN    NNNNN                                              
-                                             VNNNH        HHNNNNNNHNNNFNH             HH(NNNNNNNNNNHN        HNNNN                                             
-                                            VNNNN              HNNNNNNNNNHNHHNNNNNNNNNNNNNNNNNNN              HNNNV                                            
-                                           HNNNN              NNNN    VHNNNHNNNHNNNNNNNNV    NNNN              HNNNN                                           
-                                          (NNNN              NNNNH      NNN         NNN(     VNNNN              HNNNH                                          
-                                          NNNN              NNNN       NNNN         NNNN       NNNN              HNNN(                                         
-                                         NNNN              NNNNN      FNNNH         VNNNH       NNNN              NNNN                                         
-                                        *NNNV(FNNNNNNV    NNNNV       NNNN           NNNN        HNNN    FHNNNNNV(VNNNV                                        
-                                        NNNNHNNNHHNNHNNH NNNNH       NNNN             HNNN       VNNNN (NNNHNNHNNNNNNNN                                        
-                                         HHNHHV     NNNHNNNNV       VNNNH             VNNNN        NNNNNNNN     VHHNNH                                         
-                                                    VNNNNNNFFFF(    NNNN               NNNN    *FFFFNNNNNNN                                                    
-                                                     NNNNNNNNNNHNHVVNNNV                NNNN(NNNNNNHNNNNNNV                                                    
-                                                    NNNNNNHHVVVHHNNNNNN                 NNNNNNNNVVVVHHNHNNN                                                    
-                                                      HH        HNNNNNNNNHN,       .NNNNNNNNNNH        VNH                                                     
-                                                                 NHNHNNNNNNNHN   HNNNHNNNHNHHN                                                                 
-                                                                 NNNN     HNNHNNNNNNH     HNNN                                                                 
-                                                                             HNNNH                                                                             
-                                                                              HHH                                                                              
+                                                                         |███     ████|                                                                        
+                                                |                        ██████████████                       |                                                
+                                                ████|                    █████████████                    |████                                                
+                                                ████████                |██████ |██████                ████████|                                               
+                                               ████████████|            ██████   ██████            |████████████                                               
+                                              █████    █████████|      █████        ████      |█████████    █████                                              
+                                             █████        ███████████████             ██|████████████        █████                                             
+                                            █████              █████████████████████████████████              █████                                            
+                                           █████              ████    ███████████████████    ████              █████                                           
+                                          |████              █████      ███         ███|     █████              █████                                          
+                                          ████              ████       ████         ████       ████              ████|                                         
+                                         ████              █████      █████         █████       ████              ████                                         
+                                        |████|████████    █████       ████           ████        ████    ████████|█████                                        
+                                        ████████████████ █████       ████             ████       █████ |███████████████                                        
+                                         ██████     █████████       █████             █████        ████████     ██████                                         
+                                                    ███████████|    ████               ████    |███████████                                                    
+                                                     ███████████████████                ████|██████████████                                                    
+                                                    ███████████████████                 ███████████████████                                                    
+                                                      ██        ███████████|       |███████████        ███                                                     
+                                                                 █████████████   █████████████                                                                 
+                                                                 ████     ███████████     ████                                                                 
+                                                                             █████                                                                             
+                                                                              ███                                                                              
                                                                                                                                                                
                                                                                                                                                                
-                                                                    FVV          VVVV.   VVVVV/  FVVVV(   FVV      VV                                          
-                                     VV    VVV   FVVV     VVVVVVV  *VVVVF   VF   VV VV* VVV      VVV     VV       VV(                                          
-                                      VV/ VVV   VVVVV(    VVFVVVV  (VVVV   ,VV   VVVVV  *VVVVV   VVVVVV (VV  VVV  VV/ VVV                                      
-                                       VVVV/   VVV  VV*   VF   VV  VV      /VV   VVVV    VV      VV(     FVVVVV   VV* VV(                                      
-                                       (VF     V     VV   H    FV           VF   F (V(   VVVVVF  VVVVV*    FVVF   /VVVV/                                       
+                                                                    ███          ████|   █████|  █████|   ███      ██                                          
+                                     ██    ███   ████     ███████  |█████   ██   ██ ██| ███      ███     ██       ██|                                          
+                                      ██| ███   █████|    ███████  |████   |██   █████  |█████   ██████ |██  ███  ██| ███                                      
+                                       ████|   ███  ██|   ██   ██  ██      |██   ████    ██      ██|     ██████   ██| ██|                                      
+                                       |██     █     ██   █    ██           ██   █ |█|   ██████  █████|    ████   |████|                                       
                                                                                                                                                                
-                                                                                                                                                      
+                                                                                                                                                               
 ]]
 
 --------------------------------------------
@@ -129,7 +129,7 @@ function scene:create( event )
 	{
 		text = "",     
 		x = totalWidth/2 - 100,
-		y = totalHeight/2 - 100,
+		y = totalHeight/2 - 150,
 		font = "cour.ttf",   
 		fontSize = 16,
 		align = "left"  -- Alignment parameter
@@ -141,7 +141,7 @@ function scene:create( event )
 		x = totalWidth - 100,
 		y = totalHeight - 100,
 		font = "cour.ttf",   
-		fontSize = 2,
+		fontSize = 3,
 		align = "right"  -- Alignment parameter
 	}
 	 
@@ -153,25 +153,11 @@ function scene:create( event )
 	background.txt2 = display.newText(options2)
 			
 	background.txt:setFillColor( 1, 1, 0.7, 1)
-	background.txt2:setFillColor( 1, 1, 0.7, 1)
+	background.txt2:setFillColor( 0.9, 0.7, 0.9, 1)
 	
 	-- create/position logo/title image on upper-half of the screen
 
 	
-	-- create a widget button (which will loads level1.lua on release)
-	playBtn = widget.newButton{
-		label="",
-		labelColor = { default={255}, over={128} },
-		default="button.png",
-		over="button-over.png",
-		width=154, height=40,
-		onRelease = onPlayBtnRelease	-- event listener function
-	}
-	playBtn.x = display.contentCenterX
-	playBtn.y = display.contentHeight - 125
-	
-	-- all display objects must be inserted into group
-	sceneGroup:insert( playBtn )
 end
 
 function scene:show( event )
