@@ -9,6 +9,8 @@ local scene = composer.newScene()
 
 -- include Corona's "widget" library
 local widget = require "widget"
+local totalHeight = 1080
+local totalWidth = 1920
 
 --------------------------------------------
 
@@ -33,11 +35,8 @@ function scene:create( event )
 	-- e.g. add display objects to 'sceneGroup', add touch listeners, etc.
 
 	-- display a background image
-	local background = display.newImageRect( "background.jpg", display.actualContentWidth, display.actualContentHeight )
-	background.anchorX = 0
-	background.anchorY = 0
-	background.x = 0 + display.screenOriginX 
-	background.y = 0 + display.screenOriginY
+	local background = display.newRect(sceneGroup, totalWidth/2, totalHeight/2, totalWidth, totalHeight)
+	background:setFillColor(0.3, 0.2, 0.1, 1)
 	
 	-- create/position logo/title image on upper-half of the screen
 	local titleLogo = display.newImageRect( "logo.png", 264, 42 )
@@ -57,7 +56,6 @@ function scene:create( event )
 	playBtn.y = display.contentHeight - 125
 	
 	-- all display objects must be inserted into group
-	sceneGroup:insert( background )
 	sceneGroup:insert( titleLogo )
 	sceneGroup:insert( playBtn )
 end
