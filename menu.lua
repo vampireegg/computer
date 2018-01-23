@@ -18,6 +18,7 @@ local speed1 = 8
 local speed2 = 55
 local backgroundMusic
 local backgroundMusicChannel
+local sceneGroup
 
 
 local title = 
@@ -103,7 +104,7 @@ local vampireegg =
 	local options = 
 	{
 		text = "",     
-		x = totalWidth/2 - 200,
+		x = totalWidth/2 - 150,
 		y = totalHeight/2 - 150,
 		font = "cour.ttf",   
 		fontSize = 14,
@@ -130,7 +131,8 @@ local playBtn
 local function onPlayBtnRelease()
 	
 	-- go to level1.lua scene
-	composer.gotoScene( "level1", "fade", 500 )
+	display.remove(sceneGroup)
+	composer.gotoScene( "password", "fade", 500 )
 	
 	return true	-- indicates successful touch
 end
@@ -157,11 +159,13 @@ local function on_frame( event )
 	
 	if(showName == false and index * speed2 >= #vampireegg) then
 		audio.stop( backgroundMusicChannel )
+		Runtime:removeEventListener( "enterFrame", on_frame )
+		onPlayBtnRelease()
 	end
 end
 
 function scene:create( event )
-	local sceneGroup = self.view
+	sceneGroup = self.view
 	index = 1
 	showName = true
 
@@ -173,7 +177,6 @@ function scene:create( event )
 	-- display a background image
 	
 
-	--local myText = display.newText( options )
 	background = display.newRect(sceneGroup, totalWidth/2, totalHeight/2, totalWidth, totalHeight)
 	background:setFillColor(0.1, 0.05, 0.15, 1)
 	
@@ -189,7 +192,6 @@ function scene:create( event )
 end
 
 function scene:show( event )
-	local sceneGroup = self.view
 	local phase = event.phase
 	
 	if phase == "will" then
@@ -204,12 +206,13 @@ function scene:show( event )
 				
 		background.txt:setFillColor( 1, 1, 0.7, 1)
 		background.txt2:setFillColor( 0.9, 0.9, 0.7, 1)
+		sceneGroup:insert(background.txt)
+		sceneGroup:insert(background.txt2)
 		Runtime:addEventListener( "enterFrame", on_frame )
 	end	
 end
 
 function scene:hide( event )
-	local sceneGroup = self.view
 	local phase = event.phase
 	
 	if event.phase == "will" then
@@ -219,21 +222,12 @@ function scene:hide( event )
 		-- e.g. stop timers, stop animation, unload sounds, etc.)
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
+		composer.removeScene( "menu" )
 	end	
 end
 
 function scene:destroy( event )
-	local sceneGroup = self.view
 	
-	-- Called prior to the removal of scene's "view" (sceneGroup)
-	-- 
-	-- INSERT code here to cleanup the scene
-	-- e.g. remove display objects, remove touch listeners, save state, etc.
-	
-	if playBtn then
-		playBtn:removeSelf()	-- widgets must be manually removed
-		playBtn = nil
-	end
 end
 
 ---------------------------------------------------------------------------------
