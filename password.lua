@@ -112,50 +112,7 @@ function scene:create( event )
 	
 		
 	
-	passwordField = native.newTextField( totalWidth/2, totalHeight/2 - 30, 350, 40 )
-	passwordField.inputType = "default"
-	passwordField.isSecure = true
-	passwordField:addEventListener( "userInput", makeSecure )
 	
-	
-	background.txt = display.newText(sceneGroup,"Password:", passwordField.x - 125 , passwordField.y - 50,  "calibri.ttf", 24 )
-	
-	background.txt2 = display.newText(sceneGroup,"Vampireegg", passwordField.x - 100 , passwordField.y - 130,  "calibri.ttf", 32 )
-	
-	background.txt3 = display.newText(sceneGroup,"Locked", passwordField.x - 150 , passwordField.y - 100,  "calibri.ttf", 16 )
-	
-	background.txt4 = display.newText(sceneGroup,"Password Hint?", passwordField.x - 120 , passwordField.y + 50,  "calibri.ttf", 16 )
-	
-	background.txt5 = display.newText(sceneGroup,"", passwordField.x , passwordField.y + 200,  "calibri.ttf", 24 )
-	
-	background.txt6 = display.newText(sceneGroup,"", passwordField.x , passwordField.y,  "calibri.ttf", 24 )
-	
-	background.txt4:addEventListener( "tap", showHint )
-	
-	background.txt:setFillColor(1, 0.9, 0.6, 1)
-	background.txt2:setFillColor(1, 0.9, 0.6, 1)
-	background.txt3:setFillColor(1, 0.9, 0.6, 1)
-	background.txt5:setFillColor(1, 0.9, 0.75, 1)
-	background.txt6:setFillColor(0.1, 0.1, 0.1, 1)
-	
-	background.avatarfield = display.newRect(sceneGroup, totalWidth/2 - 350, totalHeight/2 - 80, 200, 230)
-	background.avatarfield:setFillColor(0.1, 0.1, 0.2, 1)
-	-- background.avatarfield.strokeWidth = 3
-	-- background.avatarfield:setStrokeColor( 1, 0.9, 0.6 )
-	
-	background.submitfield = display.newRect(sceneGroup, passwordField.x + passwordField.width / 2 + 90, passwordField.y, 100, passwordField.height)
-	background.submitfield:setFillColor(0.3, 0.5, 0.2, 1)
-	background.submitfield.strokeWidth = 2
-	background.submitfield:setStrokeColor( 1, 1, 1 )
-	
-	background.submitfield:addEventListener( "tap", checkPassword )
-	
-	background.txt4 = display.newText(sceneGroup,"Submit", background.submitfield.x , background.submitfield.y,  "calibri.ttf", 18 )
-	
-	background.img = display.newImageRect( sceneGroup, "hooded.png", 1920, 1040 )
-	background.img:scale(0.16, 0.16)
-	background.img.x = background.avatarfield.x
-	background.img.y = background.avatarfield.y
 	
 	-- create/position logo/title image on upper-half of the screen
 
@@ -169,7 +126,50 @@ function scene:show( event )
 	if phase == "will" then
 		-- Called when the scene is still off screen and is about to move on screen
 	elseif phase == "did" then
-
+		passwordField = native.newTextField( totalWidth/2, totalHeight/2 - 30, 350, 40 )
+		passwordField.inputType = "default"
+		passwordField.isSecure = true
+		passwordField:addEventListener( "userInput", makeSecure )
+		
+		
+		background.txt = display.newText(sceneGroup,"Password:", passwordField.x - 125 , passwordField.y - 50,  "calibri.ttf", 24 )
+		
+		background.txt2 = display.newText(sceneGroup,"Vampireegg", passwordField.x - 100 , passwordField.y - 130,  "calibri.ttf", 32 )
+		
+		background.txt3 = display.newText(sceneGroup,"Locked", passwordField.x - 150 , passwordField.y - 100,  "calibri.ttf", 16 )
+		
+		background.txt4 = display.newText(sceneGroup,"Password Hint?", passwordField.x - 120 , passwordField.y + 50,  "calibri.ttf", 16 )
+		
+		background.txt5 = display.newText(sceneGroup,"", passwordField.x , passwordField.y + 200,  "calibri.ttf", 24 )
+		
+		background.txt6 = display.newText(sceneGroup,"", passwordField.x , passwordField.y,  "calibri.ttf", 24 )
+		
+		background.txt4:addEventListener( "tap", showHint )
+		
+		background.txt:setFillColor(1, 0.9, 0.6, 1)
+		background.txt2:setFillColor(1, 0.9, 0.6, 1)
+		background.txt3:setFillColor(1, 0.9, 0.6, 1)
+		background.txt5:setFillColor(1, 0.9, 0.75, 1)
+		background.txt6:setFillColor(0.1, 0.1, 0.1, 1)
+		
+		background.avatarfield = display.newRect(sceneGroup, totalWidth/2 - 350, totalHeight/2 - 80, 200, 230)
+		background.avatarfield:setFillColor(0.1, 0.1, 0.2, 1)
+		-- background.avatarfield.strokeWidth = 3
+		-- background.avatarfield:setStrokeColor( 1, 0.9, 0.6 )
+		
+		background.submitfield = display.newRect(sceneGroup, passwordField.x + passwordField.width / 2 + 90, passwordField.y, 100, passwordField.height)
+		background.submitfield:setFillColor(0.3, 0.5, 0.2, 1)
+		background.submitfield.strokeWidth = 2
+		background.submitfield:setStrokeColor( 1, 1, 1 )
+		
+		background.submitfield:addEventListener( "tap", checkPassword )
+		
+		background.txt4 = display.newText(sceneGroup,"Submit", background.submitfield.x , background.submitfield.y,  "calibri.ttf", 18 )
+		
+		background.img = display.newImageRect( sceneGroup, "hooded.png", 1920, 1040 )
+		background.img:scale(0.16, 0.16)
+		background.img.x = background.avatarfield.x
+		background.img.y = background.avatarfield.y
 	end	
 end
 
