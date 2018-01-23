@@ -40,9 +40,45 @@ end
 
 local function checkPassword( event )
 	if(passwordField.text == " ") then
-		background.txt6.text = "Great Job!"
+		passwordField.text = "Great Job!"
+		passwordField.isSecure = false
 	else
-		background.txt6.text = "Sorry, Wrong Password!"
+		passwordField.text = "Sorry, Wrong Password!"
+		passwordField.isSecure = false
+	end
+end
+
+local function makeSecure( event )
+	print("user inputting")
+	
+	 if ( event.phase == "began" ) then
+        -- User begins editing "defaultField"
+		passwordField.text = ""
+		event.text = ""
+		event.oldText = ""
+		event.newCharacters = ""
+ 
+    elseif ( event.phase == "ended" or event.phase == "submitted" ) then
+        -- Output resulting text from "defaultField"
+        print( event.target.text )
+		native.setKeyboardFocus( nil )
+    elseif ( event.phase == "editing" ) then
+		print("user inputting 1")
+		event.oldText = ""
+		passwordField.isSecure = true
+        print( event.newCharacters )
+        print( event.oldText )
+        print( event.startPosition )
+        print( event.text )
+    end
+
+end
+
+local function deleteText( event )
+	if(event.phase == "began") then
+		passwordField.text = ""
+	elseif ( "ended" == event.phase ) then	
+
 	end
 end
 
@@ -72,11 +108,15 @@ function scene:create( event )
 	--local myText = display.newText( options )
 	background = display.newRect(sceneGroup, totalWidth/2, totalHeight/2, totalWidth, totalHeight)
 	background:setFillColor(0.2, 0.1, 0.3, 1)
+	
+	
 		
 	
 	passwordField = native.newTextField( totalWidth/2, totalHeight/2 - 30, 350, 40 )
 	passwordField.inputType = "default"
 	passwordField.isSecure = true
+	passwordField:addEventListener( "userInput", makeSecure )
+	
 	
 	background.txt = display.newText(sceneGroup,"Password:", passwordField.x - 125 , passwordField.y - 50,  "calibri.ttf", 24 )
 	
@@ -88,7 +128,7 @@ function scene:create( event )
 	
 	background.txt5 = display.newText(sceneGroup,"", passwordField.x , passwordField.y + 200,  "calibri.ttf", 24 )
 	
-	background.txt6 = display.newText(sceneGroup,"", passwordField.x , passwordField.y + 100,  "calibri.ttf", 24 )
+	background.txt6 = display.newText(sceneGroup,"", passwordField.x , passwordField.y,  "calibri.ttf", 24 )
 	
 	background.txt4:addEventListener( "tap", showHint )
 	
@@ -96,6 +136,7 @@ function scene:create( event )
 	background.txt2:setFillColor(1, 0.9, 0.6, 1)
 	background.txt3:setFillColor(1, 0.9, 0.6, 1)
 	background.txt5:setFillColor(1, 0.9, 0.75, 1)
+	background.txt6:setFillColor(0.1, 0.1, 0.1, 1)
 	
 	background.avatarfield = display.newRect(sceneGroup, totalWidth/2 - 350, totalHeight/2 - 80, 200, 230)
 	background.avatarfield:setFillColor(0.1, 0.1, 0.2, 1)
