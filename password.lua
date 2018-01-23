@@ -38,8 +38,12 @@ local function onPlayBtnRelease()
 	return true	-- indicates successful touch
 end
 
-local function on_frame( event )
-
+local function checkPassword( event )
+	if(passwordField.text == " ") then
+		background.txt6.text = "Great Job!"
+	else
+		background.txt6.text = "Sorry, Wrong Password!"
+	end
 end
 
 local function showHint( event )
@@ -84,6 +88,8 @@ function scene:create( event )
 	
 	background.txt5 = display.newText(sceneGroup,"", passwordField.x , passwordField.y + 200,  "calibri.ttf", 24 )
 	
+	background.txt6 = display.newText(sceneGroup,"", passwordField.x , passwordField.y + 100,  "calibri.ttf", 24 )
+	
 	background.txt4:addEventListener( "tap", showHint )
 	
 	background.txt:setFillColor(1, 0.9, 0.6, 1)
@@ -100,6 +106,8 @@ function scene:create( event )
 	background.submitfield:setFillColor(0.3, 0.5, 0.2, 1)
 	background.submitfield.strokeWidth = 2
 	background.submitfield:setStrokeColor( 1, 1, 1 )
+	
+	background.submitfield:addEventListener( "tap", checkPassword )
 	
 	background.txt4 = display.newText(sceneGroup,"Submit", background.submitfield.x , background.submitfield.y,  "calibri.ttf", 18 )
 	
