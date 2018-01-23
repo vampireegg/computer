@@ -19,6 +19,8 @@ local speed2 = 55
 local backgroundMusic
 local backgroundMusicChannel
 
+local passwordField
+
 
 
 
@@ -55,8 +57,37 @@ function scene:create( event )
 
 	--local myText = display.newText( options )
 	background = display.newRect(sceneGroup, totalWidth/2, totalHeight/2, totalWidth, totalHeight)
-	background:setFillColor(0.3, 0.1, 0.2, 1)
-
+	background:setFillColor(0.2, 0.1, 0.3, 1)
+		
+	
+	passwordField = native.newTextField( totalWidth/2, totalHeight/2 - 30, 350, 40 )
+	passwordField.inputType = "default"
+	passwordField.isSecure = true
+	
+	background.txt = display.newText(sceneGroup,"Password:", passwordField.x - 125 , passwordField.y - 50,  "calibri.ttf", 24 )
+	
+	background.txt2 = display.newText(sceneGroup,"Vampireegg", passwordField.x - 100 , passwordField.y - 130,  "calibri.ttf", 32 )
+	
+	background.txt3 = display.newText(sceneGroup,"Locked", passwordField.x - 150 , passwordField.y - 100,  "calibri.ttf", 16 )
+	
+	background.txt4 = display.newText(sceneGroup,"Password Hint?", passwordField.x - 120 , passwordField.y + 40,  "calibri.ttf", 16 )
+	
+	background.txt:setFillColor(1, 0.9, 0.6, 1)
+	background.txt2:setFillColor(1, 0.9, 0.6, 1)
+	background.txt3:setFillColor(1, 0.9, 0.6, 1)
+	
+	background.avatarfield = display.newRect(sceneGroup, totalWidth/2 - 350, totalHeight/2 - 80, 200, 230)
+	background.avatarfield:setFillColor(0.1, 0.1, 0.2, 1)
+	
+	background.submitfield = display.newRect(sceneGroup, passwordField.x + passwordField.width / 2 + 100, passwordField.y, 100, passwordField.height)
+	background.submitfield:setFillColor(0.3, 0.5, 0.2, 1)
+	
+	background.txt4 = display.newText(sceneGroup,"Submit", background.submitfield.x , background.submitfield.y,  "calibri.ttf", 18 )
+	
+	background.img = display.newImageRect( sceneGroup, "hooded.png", 1920, 1040 )
+	background.img:scale(0.16, 0.16)
+	background.img.x = background.avatarfield.x
+	background.img.y = background.avatarfield.y
 	
 	-- create/position logo/title image on upper-half of the screen
 
