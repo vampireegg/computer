@@ -14,7 +14,7 @@ local totalWidth = 1920
 local background
 local index
 local showName
-local speed1 = 10
+local speed1 = 8
 local speed2 = 55
 local backgroundMusic
 local backgroundMusicChannel
@@ -106,7 +106,7 @@ local vampireegg =
 		x = totalWidth/2 - 200,
 		y = totalHeight/2 - 150,
 		font = "cour.ttf",   
-		fontSize = 12,
+		fontSize = 14,
 		align = "left"  -- Alignment parameter
 	}
 	
