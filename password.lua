@@ -42,6 +42,16 @@ local function on_frame( event )
 
 end
 
+local function showHint( event )
+	background.txt5.text = 
+	[[
+	"It is a small gap.
+	It is the gap between small and gap.
+	You jump with it.
+	It is infinite!"
+	]]
+end
+
 function scene:create( event )
 	local sceneGroup = self.view
 	index = 1
@@ -70,11 +80,16 @@ function scene:create( event )
 	
 	background.txt3 = display.newText(sceneGroup,"Locked", passwordField.x - 150 , passwordField.y - 100,  "calibri.ttf", 16 )
 	
-	background.txt4 = display.newText(sceneGroup,"Password Hint?", passwordField.x - 120 , passwordField.y + 40,  "calibri.ttf", 16 )
+	background.txt4 = display.newText(sceneGroup,"Password Hint?", passwordField.x - 120 , passwordField.y + 50,  "calibri.ttf", 16 )
+	
+	background.txt5 = display.newText(sceneGroup,"", passwordField.x , passwordField.y + 200,  "calibri.ttf", 24 )
+	
+	background.txt4:addEventListener( "tap", showHint )
 	
 	background.txt:setFillColor(1, 0.9, 0.6, 1)
 	background.txt2:setFillColor(1, 0.9, 0.6, 1)
 	background.txt3:setFillColor(1, 0.9, 0.6, 1)
+	background.txt5:setFillColor(1, 0.9, 0.75, 1)
 	
 	background.avatarfield = display.newRect(sceneGroup, totalWidth/2 - 350, totalHeight/2 - 80, 200, 230)
 	background.avatarfield:setFillColor(0.1, 0.1, 0.2, 1)
