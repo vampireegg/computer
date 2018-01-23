@@ -79,8 +79,11 @@ function scene:create( event )
 	background.avatarfield = display.newRect(sceneGroup, totalWidth/2 - 350, totalHeight/2 - 80, 200, 230)
 	background.avatarfield:setFillColor(0.1, 0.1, 0.2, 1)
 	
-	background.submitfield = display.newRect(sceneGroup, passwordField.x + passwordField.width / 2 + 100, passwordField.y, 100, passwordField.height)
+	background.submitfield = display.newRect(sceneGroup, passwordField.x + passwordField.width / 2 + 90, passwordField.y, 100, passwordField.height)
 	background.submitfield:setFillColor(0.3, 0.5, 0.2, 1)
+	background.submitfield.strokeWidth = 2
+	--background.submitfield:setFillColor( 0.5 )
+	background.submitfield:setStrokeColor( 1, 1, 1 )
 	
 	background.txt4 = display.newText(sceneGroup,"Submit", background.submitfield.x , background.submitfield.y,  "calibri.ttf", 18 )
 	
