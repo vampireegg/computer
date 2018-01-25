@@ -92,12 +92,23 @@ function scene:create( event )
 	background.taskbar:setFillColor(0.5,0.5,0.5,0.7)
 	
 	background.icons = {}
-	background.icons[1] = display.newImageRect( sceneGroup, "pc.png", 256, 256 )
-	background.icons[1].x = 100
+	background.icons[1] = display.newImageRect( sceneGroup, "pc.png", 512, 512 )
+	background.icons[1].x = 120
 	background.icons[1].y = 100
-	background.icons[1]:scale(0.3,0.3)
+	background.icons[1]:scale(0.14,0.14)
 	background.icons[1].txt = display.newText(sceneGroup,"This PC", background.icons[1].x , background.icons[1].y + 60,  "calibri.ttf", 20 )
-		
+	
+	background.icons[2] = display.newImageRect( sceneGroup, "ghrome.png", 512, 512 )
+	background.icons[2].x = 120
+	background.icons[2].y = 250
+	background.icons[2]:scale(0.14,0.14)
+	background.icons[2].txt = display.newText(sceneGroup,"Coogle\nGhrome", background.icons[2].x , background.icons[2].y + 80,  "calibri.ttf", 20 )
+	
+	background.taskbar.icons = {}
+	background.taskbar.icons[1] = display.newImageRect( sceneGroup, "door.png", 512, 512 )
+	background.taskbar.icons[1].x = 25
+	background.taskbar.icons[1].y = totalHeight	- 25
+	background.taskbar.icons[1]:scale(0.08,0.08)
 	
 	
 	
