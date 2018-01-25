@@ -12,6 +12,7 @@ local widget = require "widget"
 local totalHeight = 1080
 local totalWidth = 1920
 local background
+local bgRect
 local index
 local showName
 local speed1 = 8
@@ -20,7 +21,7 @@ local backgroundMusic
 local backgroundMusicChannel
 
 local passwordField
-
+local sceneGroup
 
 
 
@@ -93,7 +94,7 @@ local function showHint( event )
 end
 
 function scene:create( event )
-	local sceneGroup = self.view
+	sceneGroup = self.view
 	index = 1
 	showName = true
 
@@ -106,8 +107,14 @@ function scene:create( event )
 	
 
 	--local myText = display.newText( options )
-	background = display.newRect(sceneGroup, totalWidth/2, totalHeight/2, totalWidth, totalHeight)
-	background:setFillColor(0.8, 0.1, 0.3, 1)
+	
+	bgRect = display.newRect(sceneGroup, totalWidth/2, totalHeight/2, totalWidth, totalHeight)
+	bgRect:setFillColor(0.1, 0.1, 0.2, 1)
+	
+	background = display.newImageRect( sceneGroup, "city3.png", totalWidth, totalHeight )
+	background.x = totalWidth/2
+	background.y = totalHeight/2
+	--background:setFillColor(0.8, 0.1, 0.3, 1)
 	
 	
 		
