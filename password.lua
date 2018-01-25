@@ -112,15 +112,7 @@ function scene:create( event )
 	--local myText = display.newText( options )
 	background = display.newRect(sceneGroup, totalWidth/2, totalHeight/2, totalWidth, totalHeight)
 	background:setFillColor(0.2, 0.1, 0.3, 1)
-	
-	
-		
-	
-	
-	
-	-- create/position logo/title image on upper-half of the screen
 
-	
 end
 
 function scene:show( event )

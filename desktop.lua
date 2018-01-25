@@ -39,58 +39,23 @@ local function onPlayBtnRelease()
 	return true	-- indicates successful touch
 end
 
-local function checkPassword( event )
-	if(passwordField.text == " ") then
-		passwordField.text = "Great Job!"
-		passwordField.isSecure = false
-	else
-		passwordField.text = "Sorry, Wrong Password!"
-		passwordField.isSecure = false
+local function on_frame( event )
+	bgRect.r = bgRect.r + bgRect.rinc * 0.0005
+	if(bgRect.r > 0.3 or bgRect.r <= 0) then
+		bgRect.rinc = bgRect.rinc * -1
 	end
-end
-
-local function makeSecure( event )
-	print("user inputting")
 	
-	 if ( event.phase == "began" ) then
-        -- User begins editing "defaultField"
-		passwordField.text = ""
-		event.text = ""
-		event.oldText = ""
-		event.newCharacters = ""
- 
-    elseif ( event.phase == "ended" or event.phase == "submitted" ) then
-        -- Output resulting text from "defaultField"
-        print( event.target.text )
-		native.setKeyboardFocus( nil )
-    elseif ( event.phase == "editing" ) then
-		print("user inputting 1")
-		event.oldText = ""
-		passwordField.isSecure = true
-        print( event.newCharacters )
-        print( event.oldText )
-        print( event.startPosition )
-        print( event.text )
-    end
-
-end
-
-local function deleteText( event )
-	if(event.phase == "began") then
-		passwordField.text = ""
-	elseif ( "ended" == event.phase ) then	
-
+	bgRect.g = bgRect.r + bgRect.rinc *0.007
+	if(bgRect.g > 0.3 or bgRect.g <= 0) then
+		bgRect.ginc = bgRect.ginc * -1
 	end
-end
-
-local function showHint( event )
-	background.txt5.text = 
-	[[
-	"It is a small gap.
-	It is the gap between small and gap.
-	You jump with it.
-	It is infinite!"
-	]]
+	
+	bgRect.b = bgRect.b + bgRect.binc * 0.0004
+	if(bgRect.b > 0.3 or bgRect.b <= 0) then
+		bgRect.binc = bgRect.binc * -1
+	end
+	
+	bgRect:setFillColor(bgRect.r, bgRect.g, bgRect.b, 1)
 end
 
 function scene:create( event )
@@ -109,14 +74,29 @@ function scene:create( event )
 	--local myText = display.newText( options )
 	
 	bgRect = display.newRect(sceneGroup, totalWidth/2, totalHeight/2, totalWidth, totalHeight)
-	bgRect:setFillColor(0.1, 0.1, 0.2, 1)
+	bgRect.r = 0.1
+	bgRect.g = 0.1
+	bgRect.b = 0.2
+	bgRect.rinc = 1
+	bgRect.ginc = 1
+	bgRect.binc = -1
+	bgRect:setFillColor(bgRect.r, bgRect.g, bgRect.b, 1)
 	
 	background = display.newImageRect( sceneGroup, "city3.png", totalWidth, totalHeight )
 	background.x = totalWidth/2
 	background.y = totalHeight/2
 	--background:setFillColor(0.8, 0.1, 0.3, 1)
 	
+	local taskbarHeight = 50
+	background.taskbar = display.newRect(sceneGroup, totalWidth/2, totalHeight - taskbarHeight / 2, totalWidth, taskbarHeight)
+	background.taskbar:setFillColor(0.5,0.5,0.5,0.7)
 	
+	background.icons = {}
+	background.icons[1] = display.newImageRect( sceneGroup, "pc.png", 256, 256 )
+	background.icons[1].x = 100
+	background.icons[1].y = 100
+	background.icons[1]:scale(0.3,0.3)
+	background.icons[1].txt = display.newText(sceneGroup,"This PC", background.icons[1].x , background.icons[1].y + 60,  "calibri.ttf", 20 )
 		
 	
 	
@@ -133,7 +113,7 @@ function scene:show( event )
 	if phase == "will" then
 		-- Called when the scene is still off screen and is about to move on screen
 	elseif phase == "did" then
-		
+		Runtime:addEventListener( "enterFrame", on_frame )
 	end	
 end
 
