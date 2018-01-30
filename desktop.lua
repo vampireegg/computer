@@ -22,6 +22,7 @@ local backgroundMusicChannel
 
 local passwordField
 local sceneGroup
+local removing
 
 
 
@@ -31,37 +32,44 @@ local sceneGroup
 local playBtn
 
 -- 'onRelease' event listener for playBtn
-local function onPlayBtnRelease()
-	
+local function gotoExplorer()
+	removing = true
+	display.remove(sceneGroup)
 	-- go to level1.lua scene
-	composer.gotoScene( "level1", "fade", 500 )
+	composer.gotoScene( "explorer", "fade", 500 )
 	
 	return true	-- indicates successful touch
 end
 
 local function on_frame( event )
-	bgRect.r = bgRect.r + bgRect.rinc * 0.0005
-	if(bgRect.r > 0.3 or bgRect.r <= 0) then
-		bgRect.rinc = bgRect.rinc * -1
+	if(removing == true) then
+		Runtime:removeEventListener( "enterFrame", on_frame )
+		
+	else
+		bgRect.r = bgRect.r + bgRect.rinc * 0.0005
+		if(bgRect.r > 0.3 or bgRect.r <= 0) then
+			bgRect.rinc = bgRect.rinc * -1
+		end
+		
+		bgRect.g = bgRect.r + bgRect.rinc *0.007
+		if(bgRect.g > 0.3 or bgRect.g <= 0) then
+			bgRect.ginc = bgRect.ginc * -1
+		end
+		
+		bgRect.b = bgRect.b + bgRect.binc * 0.0004
+		if(bgRect.b > 0.3 or bgRect.b <= 0) then
+			bgRect.binc = bgRect.binc * -1
+		end
+		
+		bgRect:setFillColor(bgRect.r, bgRect.g, bgRect.b, 1)
 	end
-	
-	bgRect.g = bgRect.r + bgRect.rinc *0.007
-	if(bgRect.g > 0.3 or bgRect.g <= 0) then
-		bgRect.ginc = bgRect.ginc * -1
-	end
-	
-	bgRect.b = bgRect.b + bgRect.binc * 0.0004
-	if(bgRect.b > 0.3 or bgRect.b <= 0) then
-		bgRect.binc = bgRect.binc * -1
-	end
-	
-	bgRect:setFillColor(bgRect.r, bgRect.g, bgRect.b, 1)
 end
 
 function scene:create( event )
 	sceneGroup = self.view
 	index = 1
 	showName = true
+	removing = false
 
 	-- Called when the scene's view does not exist.
 	-- 
@@ -96,7 +104,9 @@ function scene:create( event )
 	background.icons[1].x = 120
 	background.icons[1].y = 100
 	background.icons[1]:scale(0.14,0.14)
-	background.icons[1].txt = display.newText(sceneGroup,"This PC", background.icons[1].x , background.icons[1].y + 60,  "calibri.ttf", 20 )
+	background.icons[1].txt = display.newText(sceneGroup,"Computer", background.icons[1].x , background.icons[1].y + 60,  "calibri.ttf", 20 )
+	
+	background.icons[1]:addEventListener( "tap", gotoExplorer )
 	
 	background.icons[2] = display.newImageRect( sceneGroup, "ghrome.png", 512, 512 )
 	background.icons[2].x = 120
@@ -139,6 +149,7 @@ function scene:hide( event )
 		-- e.g. stop timers, stop animation, unload sounds, etc.)
 	elseif phase == "did" then
 		-- Called when the scene is now off screen
+		composer.removeScene( "desktop" )
 	end	
 end
 
