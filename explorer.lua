@@ -57,7 +57,7 @@ function scene:create( event )
 
 	--local myText = display.newText( options )
 	background = display.newRect(sceneGroup, totalWidth/2, totalHeight/2, totalWidth, totalHeight)
-	background:setFillColor(0.2, 0.1, 0.3, 1)
+	background:setFillColor(0.9, 0.9, 0.8, 1)
 
 end
 
