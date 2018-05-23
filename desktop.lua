@@ -90,17 +90,17 @@ function scene:create( event )
 	bgRect.binc = -1
 	bgRect:setFillColor(bgRect.r, bgRect.g, bgRect.b, 1)
 	
-	background = display.newImageRect( sceneGroup, "city3.png", totalWidth, totalHeight )
+	background = display.newImageRect( sceneGroup, "tree.png", 1920, 1080 )
 	background.x = totalWidth/2
 	background.y = totalHeight/2
 	--background:setFillColor(0.8, 0.1, 0.3, 1)
 	
 	local taskbarHeight = 50
 	background.taskbar = display.newRect(sceneGroup, totalWidth/2, totalHeight - taskbarHeight / 2, totalWidth, taskbarHeight)
-	background.taskbar:setFillColor(0.5,0.5,0.5,0.7)
+	background.taskbar:setFillColor(1,1,1,0.4)
 	
 	background.icons = {}
-	background.icons[1] = display.newImageRect( sceneGroup, "pc.png", 512, 512 )
+	background.icons[1] = display.newImageRect( sceneGroup, "pc3.png", 512, 512 )
 	background.icons[1].x = 120
 	background.icons[1].y = 100
 	background.icons[1]:scale(0.14,0.14)
@@ -108,15 +108,15 @@ function scene:create( event )
 	
 	background.icons[1]:addEventListener( "tap", gotoExplorer )
 	
-	background.icons[2] = display.newImageRect( sceneGroup, "ghrome.png", 512, 512 )
+	background.icons[2] = display.newImageRect( sceneGroup, "browser2.png", 980, 980 )
 	background.icons[2].x = 120
 	background.icons[2].y = 250
-	background.icons[2]:scale(0.14,0.14)
+	background.icons[2]:scale(0.08,0.08)
 	background.icons[2].txt = display.newText(sceneGroup,"Coogle\nGhrome", background.icons[2].x , background.icons[2].y + 80,  "calibri.ttf", 20 )
 	
 	background.taskbar.icons = {}
 	background.taskbar.icons[1] = display.newImageRect( sceneGroup, "door.png", 512, 512 )
-	background.taskbar.icons[1].x = 25
+	background.taskbar.icons[1].x = 55
 	background.taskbar.icons[1].y = totalHeight	- 25
 	background.taskbar.icons[1]:scale(0.08,0.08)
 	
